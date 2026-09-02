@@ -67,6 +67,8 @@
             background-color: #0d0b0c;
             color: #ffffff;
             overflow-x: hidden;
+            -ms-overflow-style: none;  /* IE y Edge */
+            scrollbar-width: none;  /* Firefox */
         }
 
         /* Sección de pantalla completa */
@@ -286,16 +288,11 @@
             color: #ffffff;
         }
 
-        /* Scrollbar */
+        /* Ocultar barra de desplazamiento manteniendo el scroll activo */
         ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a090a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #ca8a04;
-            border-radius: 4px;
+            display: none;
+            width: 0;
+            height: 0;
         }
     </style>
 </head>
