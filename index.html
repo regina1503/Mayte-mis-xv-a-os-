@@ -160,6 +160,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .envelope-half {
@@ -218,22 +219,28 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 6;
+            z-index: 30;
             background: none;
             border: none;
             padding: 0;
             cursor: pointer;
-            line-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 93px;
+            height: 93px;
+            pointer-events: auto;
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
-        /* Sello 10% más grande (93px) y sin contorno amarillo */
+        /* Sello sin contorno amarillo y 10% más grande */
         .seal-img {
             width: 93px;
             height: 93px;
             border-radius: 50%;
             object-fit: cover;
             filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+            pointer-events: none;
         }
 
         @keyframes sealPulseClean {
@@ -254,7 +261,7 @@
             top: calc(50% + 72px);
             left: 50%;
             transform: translateX(-50%);
-            z-index: 6;
+            z-index: 30;
             color: #9a7b3f;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.05rem;
@@ -262,6 +269,7 @@
             white-space: nowrap;
             animation: hintFade 1.8s ease-in-out infinite;
             transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
         @keyframes hintFade {
@@ -294,13 +302,13 @@
 <body class="relative mode-cover selection:bg-rose-500 selection:text-white">
 
     <!-- SOBRE DE BIENVENIDA -->
-    <div id="envelopeOverlay">
+    <div id="envelopeOverlay" onclick="openEnvelope()">
         <div class="envelope-half top" id="envTop"></div>
         <div class="envelope-half bottom" id="envBottom"></div>
-        <button id="sealBtn" class="seal-btn" onclick="openEnvelope()" aria-label="Abrir invitación">
+        <button id="sealBtn" class="seal-btn" aria-label="Abrir invitación">
             <img src="https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/image-Photoroom%20(20).png" alt="Sello" class="seal-img seal-pulse">
         </button>
-        <p class="envelope-hint">Toca el sello para abrir tu invitación</p>
+        <p class="envelope-hint">Toca el sello para abrir la invitación</p>
     </div>
 
     <!-- REPRODUCTOR DE MÚSICA DE FONDO -->
@@ -389,7 +397,7 @@
             </a>
         </section>
 
-        <!-- 7. PÁGINA 6A - RECEPCIÓN (Botón subido 12%) -->
+        <!-- 7. PÁGINA 6A - RECEPCIÓN -->
         <section id="pagina6a" class="page-section">
             <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM.jpeg');"></div>
             <div class="page-bg-image cursor-pointer" onclick="openLightbox('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM.jpeg', 'Recepción')" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM.jpeg');"></div>
@@ -406,7 +414,7 @@
             <div class="page-bg-image cursor-pointer" onclick="openLightbox('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(1).jpeg', 'Itinerario')" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(1).jpeg');"></div>
         </section>
 
-        <!-- 9. PÁGINA 7 - MESA DE REGALOS (Botón bajado un 25%) -->
+        <!-- 9. PÁGINA 7 - MESA DE REGALOS -->
         <section id="pagina7" class="page-section">
             <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(2).jpeg');"></div>
             <div class="page-bg-image" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(2).jpeg');"></div>
@@ -419,7 +427,7 @@
             </div>
         </section>
 
-        <!-- 10. CONFIRMACIÓN DE ASISTENCIA (Limpio sin título "Confirma tu Asistencia") -->
+        <!-- 10. CONFIRMACIÓN DE ASISTENCIA -->
         <section id="rsvp-section" class="page-section">
             <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(4).jpeg');"></div>
             <div class="page-bg-image" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(4).jpeg');"></div>
@@ -498,32 +506,6 @@
 
     </main>
 
-    <!-- GUESTBOOK MODAL -->
-    <div id="guestbookModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
-        <div class="bg-stone-950 border border-amber-500/30 rounded-2xl p-5 w-full max-w-md max-h-[90vh] flex flex-col shadow-2xl relative">
-            <button onclick="toggleGuestbookModal()" class="absolute top-4 right-4 text-stone-400 hover:text-white text-xl">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="flex items-center justify-center gap-2 mb-3">
-                <i class="fas fa-heart text-rose-400"></i>
-                <h3 class="font-script text-3xl gold-gradient-text text-center">Libro de Deseos</h3>
-            </div>
-            <p class="text-stone-300 text-xs mb-4 text-center">Deja tus buenos deseos para Mayte en este día especial.</p>
-            
-            <div id="wishesList" class="flex-1 overflow-y-auto space-y-3 pr-1 mb-4 max-h-[40vh]">
-                <!-- Dynamic wishes -->
-            </div>
-
-            <form onsubmit="addWish(event)" class="flex flex-col gap-2 pt-2 border-t border-amber-500/20">
-                <input type="text" id="guestName" required placeholder="Tu nombre" class="w-full px-3 py-2 rounded-lg bg-stone-900 border border-amber-500/30 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-amber-400 text-center">
-                <textarea id="guestMessage" required rows="2" placeholder="Escribe tu mensaje..." class="w-full px-3 py-2 rounded-lg bg-stone-900 border border-amber-500/30 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-amber-400 text-center"></textarea>
-                <button type="submit" class="w-full rounded-lg py-2 text-white font-semibold text-xs flex items-center justify-center text-center transition-all shadow-md hover:brightness-95" style="background-color:#d3a3ad;">
-                    <span class="text-center">Publicar Deseo</span>
-                </button>
-            </form>
-        </div>
-    </div>
-
     <!-- LIGHTBOX MODAL -->
     <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-lg hidden items-center justify-center p-4">
         <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-amber-400 text-3xl transition-colors z-50 p-2">
@@ -542,11 +524,10 @@
         window.onload = function() {
             document.documentElement.classList.add('no-scroll');
             createPetals();
-            loadDefaultWishes();
             startCountdown();
         };
 
-        // Sobre interactivo
+        // Apertura garantizada del sobre
         function openEnvelope() {
             const overlay = document.getElementById('envelopeOverlay');
             const top = document.getElementById('envTop');
@@ -554,29 +535,36 @@
             const sealBtn = document.getElementById('sealBtn');
             const hint = document.querySelector('.envelope-hint');
 
-            if (overlay.dataset.opened === 'true') return;
-            overlay.dataset.opened = 'true';
+            if (!overlay || overlay.style.display === 'none') return;
 
-            sealBtn.style.pointerEvents = 'none';
-            sealBtn.querySelector('img').classList.remove('seal-pulse');
-            sealBtn.style.opacity = '0';
-            sealBtn.style.transform = 'translate(-50%, -50%) scale(0.7)';
+            if (sealBtn) {
+                sealBtn.style.pointerEvents = 'none';
+                const img = sealBtn.querySelector('img');
+                if (img) img.classList.remove('seal-pulse');
+                sealBtn.style.opacity = '0';
+                sealBtn.style.transform = 'translate(-50%, -50%) scale(0.6)';
+            }
             if (hint) hint.style.opacity = '0';
 
-            top.classList.add('open');
-            bottom.classList.add('open');
+            if (top) top.classList.add('open');
+            if (bottom) bottom.classList.add('open');
 
-            // Intenta iniciar la música al pulsar el sello
-            try {
-                if (!isAudioPlaying) {
-                    toggleMusic();
-                }
-            } catch (e) {}
+            // Iniciar audio
+            const audio = document.getElementById('bgAudio');
+            if (audio && audio.paused) {
+                audio.play().then(() => {
+                    isAudioPlaying = true;
+                    const musicIcon = document.getElementById('musicIcon');
+                    if (musicIcon) musicIcon.className = "fas fa-volume-up text-sm text-white animate-pulse";
+                }).catch(err => {
+                    console.log("Audio play error:", err);
+                });
+            }
 
             setTimeout(function() {
-                overlay.style.display = 'none';
+                if (overlay) overlay.style.display = 'none';
                 document.documentElement.classList.remove('no-scroll');
-            }, 1050);
+            }, 1000);
         }
 
         // Cuenta regresiva: 24 de Octubre de 2026, 1:00 PM (UTC-6)
@@ -697,25 +685,6 @@
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        // Ajuste de pantalla (Cover vs Contain)
-        function toggleImageFitMode() {
-            const body = document.body;
-            const fitIcon = document.getElementById('fitIcon');
-            const fitLabel = document.getElementById('fitLabel');
-
-            if (body.classList.contains('mode-contain')) {
-                body.classList.remove('mode-contain');
-                body.classList.add('mode-cover');
-                fitIcon.className = 'fas fa-expand-arrows-alt text-xs';
-                if (fitLabel) fitLabel.innerText = 'Llenar';
-            } else {
-                body.classList.remove('mode-cover');
-                body.classList.add('mode-contain');
-                fitIcon.className = 'fas fa-compress-arrows-alt text-xs';
-                if (fitLabel) fitLabel.innerText = 'Completa';
-            }
-        }
-
         // Pétalos animados
         function createPetals() {
             const container = document.getElementById('petals-container');
@@ -730,13 +699,6 @@
                 petal.style.animationDelay = (Math.random() * 5) + 's';
                 container.appendChild(petal);
             }
-        }
-
-        // Modal de Libro de Deseos
-        function toggleGuestbookModal() {
-            const modal = document.getElementById('guestbookModal');
-            modal.classList.toggle('hidden');
-            modal.classList.toggle('flex');
         }
 
         // Lightbox
@@ -757,24 +719,26 @@
             lightbox.classList.remove('flex');
         }
 
-        // Compartir
-        function shareInvitation() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Mis xv años Mayte ❤️',
-                    text: '¡Te invito a mis XV Años! Revisa mi invitación digital:',
-                    url: window.location.href,
-                }).catch(() => {});
+        // Control de Música con el archivo MP3
+        function toggleMusic() {
+            const musicIcon = document.getElementById('musicIcon');
+            const audio = document.getElementById('bgAudio');
+
+            if (!audio) return;
+
+            if (audio.paused) {
+                audio.play().then(() => {
+                    isAudioPlaying = true;
+                    if (musicIcon) musicIcon.className = "fas fa-volume-up text-sm text-white animate-pulse";
+                }).catch(e => {
+                    console.log("Error de audio:", e);
+                });
             } else {
-                const tempInput = document.createElement('input');
-                tempInput.value = window.location.href;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                alert('¡Enlace copiado al portapapeles!');
+                audio.pause();
+                isAudioPlaying = false;
+                if (musicIcon) musicIcon.className = "fas fa-music text-sm text-white";
             }
         }
-
-        // Control de Música con el archivo MP3
-<!-- ... existing code -->
+    </script>
+</body>
+</html>
