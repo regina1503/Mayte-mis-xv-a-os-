@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth snap-y snap-mandatory">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis xv años Mayte ❤️</title>
+    
+    <!-- Meta tags para vista previa al compartir (WhatsApp, Facebook, Twitter, iMessage) -->
+    <meta property="og:title" content="Mis xv años Mayte ❤️">
+    <meta property="og:description" content="¡Te invito a celebrar mis XV Años! Toca aquí para abrir tu invitación digital.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%207.06.36%20PM.jpeg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mis xv años Mayte ❤️">
+    <meta name="twitter:description" content="¡Te invito a celebrar mis XV Años! Toca aquí para abrir tu invitación digital.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%207.06.36%20PM.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#fef9c3',
+                            300: '#fde047',
+                            400: '#eab308',
+                            500: '#ca8a04',
+                            600: '#a16207',
+                        },
+                        rose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                        }
+                    },
+                    fontFamily: {
+                        script: ['"Alex Brush"', 'cursive'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0d0b0c;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Sección de pantalla completa */
+        .page-section {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+            overflow: hidden;
+            background-color: #0a090a;
+        }
+
+        /* Capa ambiental difuminada para bordes */
+        .bg-ambient {
+            position: absolute;
+            inset: -15px;
+            background-size: cover;
+            background-position: center;
+            filter: blur(28px) brightness(0.35) saturate(1.2);
+            transform: scale(1.1);
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        /* Imagen nítida principal */
+        .page-bg-image {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            transition: transform 0.3s ease, background-size 0.3s ease;
+        }
+
+        /* Modos de ajuste */
+        body.mode-contain .page-bg-image {
+            background-size: contain;
+        }
+
+        body.mode-cover .page-bg-image {
+            background-size: cover;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Pétalos flotantes */
+        .petal {
+            position: fixed;
+            background: radial-gradient(circle, #fbcfe8 0%, #f472b6 100%);
+            border-radius: 150% 0 150% 0;
+            opacity: 0.7;
+            pointer-events: none;
+            z-index: 20;
+            animation: animatePetal 12s linear infinite;
+        }
+
+        @keyframes animatePetal {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) scale(0.6);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(105vh) rotate(720deg) scale(1.2);
+                opacity: 0.1;
+            }
+        }
+
+        /* Bloqueo de scroll con el sobre */
+        html.no-scroll, html.no-scroll body {
+            overflow: hidden !important;
+            height: 100%;
+        }
+
+        /* Overlay del sobre de bienvenida */
+        #envelopeOverlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: #fbfaf7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .envelope-half {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background:
+                repeating-linear-gradient(0deg,
+                    rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px,
+                    transparent 1px, transparent 3px),
+                radial-gradient(ellipse at 30% 20%, rgba(0,0,0,0.02), transparent 60%),
+                radial-gradient(ellipse at 75% 80%, rgba(0,0,0,0.02), transparent 60%),
+                #fbfaf7;
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.04);
+            z-index: 2;
+            transition: transform 1s cubic-bezier(.45, 0, .2, 1);
+        }
+
+        .envelope-half.top {
+            top: 0;
+            border-bottom: 1px solid rgba(180, 140, 70, 0.35);
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.04), 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .envelope-half.top::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -1px;
+            width: 141.5%;
+            height: 141.5%;
+            transform: translateX(-50%) rotate(45deg);
+            transform-origin: bottom center;
+            background: linear-gradient(160deg, rgba(0,0,0,0.025), transparent 60%);
+            border-bottom: 1px solid rgba(180, 140, 70, 0.18);
+            pointer-events: none;
+        }
+
+        .envelope-half.bottom {
+            bottom: 0;
+            border-top: 1px solid rgba(180, 140, 70, 0.35);
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.04), 0 -6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .envelope-half.top.open {
+            transform: translateY(-100%);
+        }
+
+        .envelope-half.bottom.open {
+            transform: translateY(100%);
+        }
+
+        .seal-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 6;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            line-height: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        /* Sello 10% más grande (93px) y sin contorno amarillo */
+        .seal-img {
+            width: 93px;
+            height: 93px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+        }
+
+        @keyframes sealPulseClean {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        .seal-pulse {
+            animation: sealPulseClean 1.5s ease-in-out infinite;
+        }
+
+        .envelope-hint {
+            position: absolute;
+            top: calc(50% + 72px);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 6;
+            color: #9a7b3f;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            animation: hintFade 1.8s ease-in-out infinite;
+            transition: opacity 0.4s ease;
+        }
+
+        @keyframes hintFade {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Barra de progreso de RSVP */
+        .step-pill {
+            transition: all 0.3s ease;
+        }
+        .step-pill.active {
+            background-color: #d3a3ad;
+            color: #ffffff;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a090a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ca8a04;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="relative mode-cover selection:bg-rose-500 selection:text-white">
+
+    <!-- SOBRE DE BIENVENIDA -->
+    <div id="envelopeOverlay">
+        <div class="envelope-half top" id="envTop"></div>
+        <div class="envelope-half bottom" id="envBottom"></div>
+        <button id="sealBtn" class="seal-btn" onclick="openEnvelope()" aria-label="Abrir invitación">
+            <img src="https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/image-Photoroom%20(20).png" alt="Sello" class="seal-img seal-pulse">
+        </button>
+        <p class="envelope-hint">Toca el sello para abrir tu invitación</p>
+    </div>
+
+    <!-- REPRODUCTOR DE MÚSICA DE FONDO -->
+    <audio id="bgAudio" loop preload="auto" src="https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/YTDown.com_YouTube_Taylor-Swift-False-God-Official-Audio_Media_acQXa5ArHIk_009_128k.mp3"></audio>
+
+    <!-- PÉTALOS FLOTANTES -->
+    <div id="petals-container" class="fixed inset-0 pointer-events-none z-20 overflow-hidden" aria-hidden="true"></div>
+
+    <!-- BOTÓN DE MÚSICA FLOTANTE (PARTE INFERIOR) -->
+    <button id="musicToggleBtn" onclick="toggleMusic()" 
+            class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full text-white shadow-lg hover:brightness-95 transition-all flex items-center justify-center" 
+            style="background-color: #d3a3ad;" 
+            title="Música de fondo">
+        <i id="musicIcon" class="fas fa-music text-sm text-white"></i>
+    </button>
+
+    <main class="w-full">
+
+        <!-- 1. PORTADA -->
+        <section id="portada" class="page-section">
+            <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%207.06.36%20PM.jpeg');"></div>
+            <div class="page-bg-image cursor-pointer" onclick="openLightbox('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%207.06.36%20PM.jpeg', 'Portada')" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%207.06.36%20PM.jpeg');"></div>
+        </section>
+
+        <!-- 2. PÁGINA 1 -->
+        <section id="pagina1" class="page-section">
+            <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM.jpeg');"></div>
+            <div class="page-bg-image cursor-pointer" onclick="openLightbox('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM.jpeg', 'Mis XV Años')" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM.jpeg');"></div>
+        </section>
+
+        <!-- 3. PÁGINA 2 -->
+        <section id="pagina2" class="page-section">
+            <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(1).jpeg');"></div>
+            <div class="page-bg-image cursor-pointer" onclick="openLightbox('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(1).jpeg', 'Nuestra Celebración')" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(1).jpeg');"></div>
+        </section>
+
+        <!-- 4. PÁGINA 3 -->
+        <section id="pagina3" class="page-section">
+            <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(2).jpeg');"></div>
+            <div class="page-bg-image cursor-pointer" onclick="openLightbox('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(2).jpeg', 'Con la Bendición de Mis Padres')" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(2).jpeg');"></div>
+        </section>
+
+        <!-- 5. PÁGINA 4 - CUENTA REGRESIVA -->
+        <section id="pagina4" class="page-section">
+            <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(3).jpeg');"></div>
+            <div class="page-bg-image cursor-pointer" onclick="openLightbox('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(3).jpeg', 'Cuenta Regresiva')" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(3).jpeg');"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center">
+                <p class="font-script text-[2.5rem] text-white mb-4" style="text-shadow: 0 2px 12px rgba(0,0,0,0.9);">Faltan solo...</p>
+                <div id="countdown" class="flex gap-3 sm:gap-5 text-white font-sans items-center justify-center">
+                    <div class="flex flex-col items-center gap-1.5">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/50 backdrop-blur-md border border-amber-400/50 flex items-center justify-center shadow-xl">
+                            <span id="cd-days" class="text-xl sm:text-2xl font-bold text-white" style="text-shadow: 0 2px 8px rgba(0,0,0,0.8);">00</span>
+                        </div>
+                        <span class="text-[11px] sm:text-xs uppercase tracking-wider text-white font-semibold" style="text-shadow: 0 1px 6px rgba(0,0,0,0.9);">Días</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1.5">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/50 backdrop-blur-md border border-amber-400/50 flex items-center justify-center shadow-xl">
+                            <span id="cd-hours" class="text-xl sm:text-2xl font-bold text-white" style="text-shadow: 0 2px 8px rgba(0,0,0,0.8);">00</span>
+                        </div>
+                        <span class="text-[11px] sm:text-xs uppercase tracking-wider text-white font-semibold" style="text-shadow: 0 1px 6px rgba(0,0,0,0.9);">Hrs</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1.5">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/50 backdrop-blur-md border border-amber-400/50 flex items-center justify-center shadow-xl">
+                            <span id="cd-mins" class="text-xl sm:text-2xl font-bold text-white" style="text-shadow: 0 2px 8px rgba(0,0,0,0.8);">00</span>
+                        </div>
+                        <span class="text-[11px] sm:text-xs uppercase tracking-wider text-white font-semibold" style="text-shadow: 0 1px 6px rgba(0,0,0,0.9);">Min</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1.5">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/50 backdrop-blur-md border border-amber-400/50 flex items-center justify-center shadow-xl">
+                            <span id="cd-secs" class="text-xl sm:text-2xl font-bold text-white" style="text-shadow: 0 2px 8px rgba(0,0,0,0.8);">00</span>
+                        </div>
+                        <span class="text-[11px] sm:text-xs uppercase tracking-wider text-white font-semibold" style="text-shadow: 0 1px 6px rgba(0,0,0,0.9);">Seg</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PÁGINA 5 - CEREMONIA -->
+        <section id="pagina5" class="page-section">
+            <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(4).jpeg');"></div>
+            <div class="page-bg-image cursor-pointer" onclick="openLightbox('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(4).jpeg', 'Ceremonia Religiosa')" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.25%20PM%20(4).jpeg');"></div>
+            <a href="https://www.google.com/maps/place/Santuario+de+la+Sant%C3%ADsima+Virgen+Mar%C3%ADa/@19.6910329,-100.5551149,17z/data=!3m1!4b1!4m6!3m5!1s0x85d2cbb403e3253f:0xace9f38f9a499f!8m2!3d19.6910329!4d-100.5551149!16s%2Fg%2F1ptv09mzw!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDgzMC4wIKXMDSoASAFQAw%3D%3D"
+               target="_blank" rel="noopener"
+               class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 rounded-full px-6 py-3 flex items-center justify-center text-center gap-2 text-white font-sans text-sm font-semibold shadow-lg hover:brightness-95 transition-all" style="background-color:#d3a3ad;">
+                <i class="fas fa-map-marker-alt"></i> <span class="text-center">Ubicación de la Ceremonia</span>
+            </a>
+        </section>
+
+        <!-- 7. PÁGINA 6A - RECEPCIÓN (Botón subido 12%) -->
+        <section id="pagina6a" class="page-section">
+            <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM.jpeg');"></div>
+            <div class="page-bg-image cursor-pointer" onclick="openLightbox('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM.jpeg', 'Recepción')" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM.jpeg');"></div>
+            <a href="https://www.google.com/maps?ftid=0x85d2c98046657e8d:0x2300a829b507c0a6&entry=gps&shh=CAE&lucs=,94297699,94231188,94280568,47071704,94218641,94282134,100813464,94286869,100820247,100822499&g_ep=CAISEjI2LjMzLjEuOTYxODkxNDMyMBgAIP___________wEqXSw5NDI5NzY5OSw5NDIxODY4MSw5NDI4MDU2OCw0NzA3MTcwNCw5NDIxODY4MSw5NDI4MjEzNCwxMDA4MTM0NcQsOTQyODY4NjksMTAwODIwMjQ3LDEwMDgyMjQ5OUICTVg%3D&skid=36d24f57-b29f-44af-aac9-084710242868&g_st=ipc"
+               target="_blank" rel="noopener"
+               class="absolute bottom-[22vh] left-1/2 -translate-x-1/2 z-10 rounded-full px-6 py-3 flex items-center justify-center text-center gap-2 text-white font-sans text-sm font-semibold shadow-lg hover:brightness-95 transition-all" style="background-color:#d3a3ad;">
+                <i class="fas fa-map-marker-alt"></i> <span class="text-center">Ubicación de la Recepción</span>
+            </a>
+        </section>
+
+        <!-- 8. PÁGINA 6B - ITINERARIO -->
+        <section id="pagina6b" class="page-section">
+            <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(1).jpeg');"></div>
+            <div class="page-bg-image cursor-pointer" onclick="openLightbox('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(1).jpeg', 'Itinerario')" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(1).jpeg');"></div>
+        </section>
+
+        <!-- 9. PÁGINA 7 - MESA DE REGALOS (Botón bajado un 25%) -->
+        <section id="pagina7" class="page-section">
+            <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(2).jpeg');"></div>
+            <div class="page-bg-image" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(2).jpeg');"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center px-6 max-w-sm translate-y-[25vh]">
+                <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60017660"
+                   target="_blank" rel="noopener"
+                   class="rounded-full px-8 py-3.5 flex items-center justify-center text-center gap-2.5 text-white font-sans text-sm font-semibold shadow-xl hover:brightness-95 transition-all transform hover:scale-105" style="background-color:#d3a3ad;">
+                    <i class="fas fa-gift text-base"></i> <span class="text-center">Liverpool Mesa de Regalos</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 10. CONFIRMACIÓN DE ASISTENCIA (Limpio sin título "Confirma tu Asistencia") -->
+        <section id="rsvp-section" class="page-section">
+            <div class="bg-ambient" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(4).jpeg');"></div>
+            <div class="page-bg-image" style="background-image: url('https://raw.githubusercontent.com/regina1503/Mayte-mis-xv-a-os-/main/WhatsApp%20Image%202026-09-01%20at%202.02.26%20PM%20(4).jpeg');"></div>
+            
+            <div class="relative z-10 flex flex-col items-center gap-3 text-center px-6 w-full max-w-sm translate-y-[22vh]">
+                <!-- Indicador de pasos -->
+                <div class="flex items-center justify-center gap-2 mb-2">
+                    <span id="pill1" class="step-pill active w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center bg-[#d3a3ad] text-white">1</span>
+                    <span class="w-4 h-0.5 bg-stone-600"></span>
+                    <span id="pill2" class="step-pill w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center bg-stone-800 text-stone-400">2</span>
+                    <span class="w-4 h-0.5 bg-stone-600"></span>
+                    <span id="pill3" class="step-pill w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center bg-stone-800 text-stone-400">3</span>
+                </div>
+
+                <!-- Contenedor del Formulario por pasos -->
+                <div class="w-full bg-stone-950/80 p-5 rounded-2xl border border-amber-500/25 shadow-2xl backdrop-blur-md min-h-[220px] flex flex-col justify-center">
+                    
+                    <!-- PASO 1: Nombre -->
+                    <div id="rsvpStep1" class="flex flex-col gap-3">
+                        <label class="text-xs text-stone-300 uppercase tracking-wider font-semibold text-center">Paso 1: ¿Cuál es tu nombre?</label>
+                        <input type="text" id="rsvpName" placeholder="Escribe tu nombre y apellido"
+                               class="w-full px-4 py-3 rounded-xl bg-stone-900 border border-amber-500/30 text-white placeholder-stone-400 text-sm focus:outline-none focus:border-amber-400 text-center">
+                        <p id="step1Error" class="text-rose-400 text-xs hidden text-center">Por favor ingresa tu nombre para continuar.</p>
+                        <button type="button" onclick="goToStep2()"
+                                class="w-full rounded-full py-2.5 mt-1 font-semibold text-xs text-white flex items-center justify-center text-center gap-2 transition-all shadow-md hover:brightness-95" style="background-color:#d3a3ad;">
+                            <span class="text-center">Siguiente</span> <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- PASO 2: ¿Asistirás? -->
+                    <div id="rsvpStep2" class="hidden flex-col gap-3">
+                        <label class="text-xs text-stone-300 uppercase tracking-wider font-semibold text-center">Paso 2: ¿Podrás acompañarnos?</label>
+                        <div class="flex flex-col gap-2">
+                            <button type="button" onclick="selectAttendance('Sí, asistiré')"
+                                    id="btnAttendYes" class="w-full py-3 px-4 rounded-xl border border-amber-500/40 bg-stone-900 hover:bg-rose-950/60 text-white text-sm font-medium transition-all flex items-center justify-between">
+                                <span class="flex items-center"><i class="fas fa-check-circle text-emerald-400 mr-2"></i> ¡Sí, con mucho gusto!</span>
+                                <i class="fas fa-chevron-right text-stone-500 text-xs"></i>
+                            </button>
+                            <button type="button" onclick="selectAttendance('No podré asistir')"
+                                    id="btnAttendNo" class="w-full py-3 px-4 rounded-xl border border-stone-700 bg-stone-900 hover:bg-rose-950/40 text-stone-300 text-sm font-medium transition-all flex items-center justify-between">
+                                <span class="flex items-center"><i class="fas fa-times-circle text-rose-400 mr-2"></i> No podré asistir</span>
+                                <i class="fas fa-chevron-right text-stone-500 text-xs"></i>
+                            </button>
+                        </div>
+                        <button type="button" onclick="goToStep1()" class="text-xs text-stone-400 hover:text-white mt-1 text-center">
+                            <i class="fas fa-arrow-left mr-1"></i> Volver atrás
+                        </button>
+                    </div>
+
+                    <!-- PASO 3: Acompañantes y Confirmación -->
+                    <div id="rsvpStep3" class="hidden flex-col gap-3">
+                        <label class="text-xs text-stone-300 uppercase tracking-wider font-semibold text-center">Paso 3: Detalles Finales</label>
+                        
+                        <div id="guestsFieldContainer" class="flex flex-col gap-1 text-center">
+                            <span class="text-[11px] text-stone-400 text-center">Total de personas (incluyéndote):</span>
+                            <input type="number" id="rsvpGuests" min="1" max="10" value="1"
+                                   class="w-full px-4 py-2.5 rounded-xl bg-stone-900 border border-amber-500/30 text-white text-sm focus:outline-none focus:border-amber-400 text-center">
+                        </div>
+
+                        <textarea id="rsvpMessage" rows="2" placeholder="Mensaje para Mayte (opcional)"
+                                  class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-amber-500/30 text-white placeholder-stone-400 text-xs focus:outline-none focus:border-amber-400 text-center"></textarea>
+
+                        <button type="button" onclick="sendRSVPFinal()"
+                                class="w-full rounded-full py-3 flex items-center justify-center text-center gap-2 text-white font-sans text-xs font-bold shadow-lg hover:brightness-95 transition-all" style="background-color:#d3a3ad;">
+                            <i class="fab fa-whatsapp text-base text-white"></i> <span class="text-center">Confirmar por WhatsApp</span>
+                        </button>
+
+                        <button type="button" onclick="goToStep2Back()" class="text-xs text-stone-400 hover:text-white text-center">
+                            <i class="fas fa-arrow-left mr-1"></i> Cambiar asistencia
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GUESTBOOK MODAL -->
+    <div id="guestbookModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-stone-950 border border-amber-500/30 rounded-2xl p-5 w-full max-w-md max-h-[90vh] flex flex-col shadow-2xl relative">
+            <button onclick="toggleGuestbookModal()" class="absolute top-4 right-4 text-stone-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="flex items-center justify-center gap-2 mb-3">
+                <i class="fas fa-heart text-rose-400"></i>
+                <h3 class="font-script text-3xl gold-gradient-text text-center">Libro de Deseos</h3>
+            </div>
+            <p class="text-stone-300 text-xs mb-4 text-center">Deja tus buenos deseos para Mayte en este día especial.</p>
+            
+            <div id="wishesList" class="flex-1 overflow-y-auto space-y-3 pr-1 mb-4 max-h-[40vh]">
+                <!-- Dynamic wishes -->
+            </div>
+
+            <form onsubmit="addWish(event)" class="flex flex-col gap-2 pt-2 border-t border-amber-500/20">
+                <input type="text" id="guestName" required placeholder="Tu nombre" class="w-full px-3 py-2 rounded-lg bg-stone-900 border border-amber-500/30 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-amber-400 text-center">
+                <textarea id="guestMessage" required rows="2" placeholder="Escribe tu mensaje..." class="w-full px-3 py-2 rounded-lg bg-stone-900 border border-amber-500/30 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-amber-400 text-center"></textarea>
+                <button type="submit" class="w-full rounded-lg py-2 text-white font-semibold text-xs flex items-center justify-center text-center transition-all shadow-md hover:brightness-95" style="background-color:#d3a3ad;">
+                    <span class="text-center">Publicar Deseo</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-lg hidden items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-amber-400 text-3xl transition-colors z-50 p-2">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="max-w-6xl max-h-[92vh] flex flex-col items-center justify-center">
+            <img id="lightboxImg" src="" alt="Vista ampliada" class="max-h-[85vh] max-w-full object-contain rounded-xl shadow-2xl border border-amber-500/20">
+            <p id="lightboxCaption" class="text-stone-300 font-serif text-lg mt-3 text-center"></p>
+        </div>
+    </div>
+
+    <script>
+        let isAudioPlaying = false;
+        let selectedAttendanceOption = '';
+
+        window.onload = function() {
+            document.documentElement.classList.add('no-scroll');
+            createPetals();
+            loadDefaultWishes();
+            startCountdown();
+        };
+
+        // Sobre interactivo
+        function openEnvelope() {
+            const overlay = document.getElementById('envelopeOverlay');
+            const top = document.getElementById('envTop');
+            const bottom = document.getElementById('envBottom');
+            const sealBtn = document.getElementById('sealBtn');
+            const hint = document.querySelector('.envelope-hint');
+
+            if (overlay.dataset.opened === 'true') return;
+            overlay.dataset.opened = 'true';
+
+            sealBtn.style.pointerEvents = 'none';
+            sealBtn.querySelector('img').classList.remove('seal-pulse');
+            sealBtn.style.opacity = '0';
+            sealBtn.style.transform = 'translate(-50%, -50%) scale(0.7)';
+            if (hint) hint.style.opacity = '0';
+
+            top.classList.add('open');
+            bottom.classList.add('open');
+
+            // Intenta iniciar la música al pulsar el sello
+            try {
+                if (!isAudioPlaying) {
+                    toggleMusic();
+                }
+            } catch (e) {}
+
+            setTimeout(function() {
+                overlay.style.display = 'none';
+                document.documentElement.classList.remove('no-scroll');
+            }, 1050);
+        }
+
+        // Cuenta regresiva: 24 de Octubre de 2026, 1:00 PM (UTC-6)
+        function startCountdown() {
+            const targetDate = new Date('2026-10-24T13:00:00-06:00').getTime();
+            const daysEl = document.getElementById('cd-days');
+            const hoursEl = document.getElementById('cd-hours');
+            const minsEl = document.getElementById('cd-mins');
+            const secsEl = document.getElementById('cd-secs');
+
+            if (!daysEl) return;
+
+            function update() {
+                const now = new Date().getTime();
+                const diff = targetDate - now;
+
+                if (diff <= 0) {
+                    daysEl.innerText = '00';
+                    hoursEl.innerText = '00';
+                    minsEl.innerText = '00';
+                    secsEl.innerText = '00';
+                    clearInterval(timerId);
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                daysEl.innerText = String(days).padStart(2, '0');
+                hoursEl.innerText = String(hours).padStart(2, '0');
+                minsEl.innerText = String(mins).padStart(2, '0');
+                secsEl.innerText = String(secs).padStart(2, '0');
+            }
+
+            update();
+            const timerId = setInterval(update, 1000);
+        }
+
+        // Lógica de Wizard para RSVP
+        function goToStep2() {
+            const name = document.getElementById('rsvpName').value.trim();
+            const error = document.getElementById('step1Error');
+            if (!name) {
+                error.classList.remove('hidden');
+                return;
+            }
+            error.classList.add('hidden');
+
+            document.getElementById('rsvpStep1').classList.add('hidden');
+            document.getElementById('rsvpStep2').classList.remove('hidden');
+            document.getElementById('rsvpStep2').classList.add('flex');
+
+            updateStepPill(2);
+        }
+
+        function goToStep1() {
+            document.getElementById('rsvpStep2').classList.add('hidden');
+            document.getElementById('rsvpStep2').classList.remove('flex');
+            document.getElementById('rsvpStep1').classList.remove('hidden');
+            updateStepPill(1);
+        }
+
+        function selectAttendance(option) {
+            selectedAttendanceOption = option;
+            const guestsContainer = document.getElementById('guestsFieldContainer');
+
+            if (option === 'No podré asistir') {
+                guestsContainer.classList.add('hidden');
+            } else {
+                guestsContainer.classList.remove('hidden');
+            }
+
+            document.getElementById('rsvpStep2').classList.add('hidden');
+            document.getElementById('rsvpStep2').classList.remove('flex');
+            document.getElementById('rsvpStep3').classList.remove('hidden');
+            document.getElementById('rsvpStep3').classList.add('flex');
+
+            updateStepPill(3);
+        }
+
+        function goToStep2Back() {
+            document.getElementById('rsvpStep3').classList.add('hidden');
+            document.getElementById('rsvpStep3').classList.remove('flex');
+            document.getElementById('rsvpStep2').classList.remove('hidden');
+            document.getElementById('rsvpStep2').classList.add('flex');
+            updateStepPill(2);
+        }
+
+        function updateStepPill(step) {
+            const p1 = document.getElementById('pill1');
+            const p2 = document.getElementById('pill2');
+            const p3 = document.getElementById('pill3');
+
+            p1.className = 'step-pill w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center ' + (step >= 1 ? 'bg-[#d3a3ad] text-white' : 'bg-stone-800 text-stone-400');
+            p2.className = 'step-pill w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center ' + (step >= 2 ? 'bg-[#d3a3ad] text-white' : 'bg-stone-800 text-stone-400');
+            p3.className = 'step-pill w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center ' + (step === 3 ? 'bg-[#d3a3ad] text-white' : 'bg-stone-800 text-stone-400');
+        }
+
+        // Envío final a WhatsApp
+        function sendRSVPFinal() {
+            const name = document.getElementById('rsvpName').value.trim();
+            const attend = selectedAttendanceOption || 'Sí, asistiré';
+            const guests = document.getElementById('rsvpGuests').value || '1';
+            const message = document.getElementById('rsvpMessage').value.trim();
+
+            let text = `¡Hola! Soy *${name}*.\n${attend === 'Sí, asistiré' ? '✅ *¡Sí, asistiré a tus XV Años!*' : '❌ *No podré asistir a tus XV Años.*'}`;
+            
+            if (attend === 'Sí, asistiré') {
+                text += `\n👥 Número de personas: *${guests}*`;
+            }
+            if (message) {
+                text += `\n💌 Mensaje: ${message}`;
+            }
+
+            const phone = '527861393248'; // México (+52)
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        // Ajuste de pantalla (Cover vs Contain)
+        function toggleImageFitMode() {
+            const body = document.body;
+            const fitIcon = document.getElementById('fitIcon');
+            const fitLabel = document.getElementById('fitLabel');
+
+            if (body.classList.contains('mode-contain')) {
+                body.classList.remove('mode-contain');
+                body.classList.add('mode-cover');
+                fitIcon.className = 'fas fa-expand-arrows-alt text-xs';
+                if (fitLabel) fitLabel.innerText = 'Llenar';
+            } else {
+                body.classList.remove('mode-cover');
+                body.classList.add('mode-contain');
+                fitIcon.className = 'fas fa-compress-arrows-alt text-xs';
+                if (fitLabel) fitLabel.innerText = 'Completa';
+            }
+        }
+
+        // Pétalos animados
+        function createPetals() {
+            const container = document.getElementById('petals-container');
+            const petalCount = 18;
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.width = (Math.random() * 10 + 8) + 'px';
+                petal.style.height = (Math.random() * 16 + 10) + 'px';
+                petal.style.animationDuration = (Math.random() * 6 + 8) + 's';
+                petal.style.animationDelay = (Math.random() * 5) + 's';
+                container.appendChild(petal);
+            }
+        }
+
+        // Modal de Libro de Deseos
+        function toggleGuestbookModal() {
+            const modal = document.getElementById('guestbookModal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+
+        // Lightbox
+        function openLightbox(imgSrc, title) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            
+            lightboxImg.src = imgSrc;
+            lightboxCaption.innerText = title || '';
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+        }
+
+        // Compartir
+        function shareInvitation() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Mis xv años Mayte ❤️',
+                    text: '¡Te invito a mis XV Años! Revisa mi invitación digital:',
+                    url: window.location.href,
+                }).catch(() => {});
+            } else {
+                const tempInput = document.createElement('input');
+                tempInput.value = window.location.href;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                alert('¡Enlace copiado al portapapeles!');
+            }
+        }
+
+        // Control de Música con el archivo MP3
+<!-- ... existing code -->
